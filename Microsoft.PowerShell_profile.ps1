@@ -4,7 +4,6 @@ function Append-Path{
 	[Environment]::SetEnvironmentVariable("path", [Environment]::GetEnvironmentVariable("path", "machine") + ";$path", "machine")
 }
 
-
 function ll{
 	param($url, $t)
 	
@@ -16,14 +15,22 @@ function ll{
 
 }
 
-function tt{
-	cd "C:\Users\0x112\documents"
-
-	vim "new-1.txt"
-}
-
 function xd{
 	param($path)
 
 	7z.exe x $path -o"C:\Program Files (x86)\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\demos"
 }
+
+function ly{
+	wsl lynx -cookies
+}
+
+function tt{
+	vim ~/documents/new-2.txt
+}
+
+function tr{
+	param($text)
+	wsl trans $text
+}
+
