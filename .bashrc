@@ -1,3 +1,5 @@
 alias s='sudo '
 alias tt='vim ~/Documents/new-2.txt'
 alias ly='lynx -cookies'
+alias m312='mpv -ytdl-format=312+234 '
+alias m299='mpv -ytdl-format=299+140 '
