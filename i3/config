@@ -1,0 +1,4 @@
+exec --no-startup-id xrandr --output DP-2 --auto --primary --output DP-0 --auto --right-of DP-2 --rotate left
+
+workspace 1 output DP-2
+workspace 2 output DP-0
