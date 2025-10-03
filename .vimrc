@@ -37,4 +37,44 @@ function! PullContent()
 	endwhile
 endfunction
 
+function! SaveBackupWithTimestamp()
+        let l:current_file = expand('%:p')
+
+        if empty(l:current_file)
+                echo "No file associated with current buffer"
+                return
+        endif
+
+        write
+
+        let l:file_dir = expand('%:p:h')
+        let l:file_name = expand('%:t:r')
+        let l:file_ext = expand('%:e')
+
+        let l:timestamp = strftime('%Y%m%d_%H%M%S')
+
+        let l:backup_dir = l:file_dir . '/' . l:file_name . '-backups'
+
+        if !isdirectory(l:backup_dir)
+                call mkdir(l:backup_dir, 'p')
+        endif
+
+        if empty(l:file_ext)
+                let l:backup_file = l:backup_dir . '/' . l:file_name . '_' . l:timestamp
+        else
+                let l:backup_file = l:backup_dir . '/' . l:file_name . '_' . l:timestamp . '.' . l:file_ext
+        endif
+
+        execute 'write ' . fnameescape(l:backup_file)
+
+        edit
+
+        echo "Backup saved: " . l:backup_file
+endfunction
+
+
 command! Time call PullContent()
+
+
+command! BackupWithTime call SaveBackupWithTimestamp()
+cabbrev wb BackupWithTime
