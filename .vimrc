@@ -10,7 +10,7 @@ function! AppendTimeInline(pomo_count, lnum)
         let line = getline(a:lnum)
 	let updated = substitute(line, '\S\+', stamp . '\0', '')
 	call setline(a:lnum, updated)
-    call system("tmux send-keys -t :.+ 'termdown 25m --no-figlet' C-m")
+    call system("tmux send-keys -t :.+ 'tmr 25' C-m")
 endfunction
 
 function! PullContent()
@@ -79,4 +79,5 @@ command! Time call PullContent()
 
 command! BackupWithTime call SaveBackupWithTimestamp()
 cabbrev wb BackupWithTime
+
 
