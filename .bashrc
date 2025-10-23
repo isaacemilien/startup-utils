@@ -13,3 +13,5 @@ ll() {
 td() {
         termdown $1m --no-figlet
 }
+
+export PATH="$HOME/.local/bin:$PATH"
