@@ -4,6 +4,10 @@ syntax enable
 filetype plugin indent on
 au BufRead,BufNewFile *.md set filetype=markdown
 
+function! CallWebhook(content, discord_ip)
+	call system("curl --header \"Content-Type: application/json\" --data \"{'content': '" . content . "'}\"" . discord_ip)
+endfunction
+
 function! AppendTimeInline(pomo_count, lnum)
   	let t = localtime()
     	let stamp = 'P' . string(a:pomo_count) . ' ' . strftime('%H%M', t) . ' ' . strftime('%H%M', t + 1500) . ': '
@@ -79,5 +83,6 @@ command! Time call PullContent()
 
 command! BackupWithTime call SaveBackupWithTimestamp()
 cabbrev wb BackupWithTime
+
 
 
